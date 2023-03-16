@@ -1,10 +1,30 @@
 ﻿@page "/"
 @page "/tab"
-@using Buddy.Components;
+@inject IConfiguration Configuration
 
 <div>
-    <Welcome />
+    <div> 
+        <mgt-login></mgt-login>
+
+        <div class="features">
+
+            <div class="header">
+                <div class="title">
+                    <h2>Calender Hub</h2>
+                    <div class="row">
+                        <div class="column">
+                            <h3>Calendar events</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="content">
+                <div class="column" id="mgt-col">
+                    <mgt-agenda></mgt-agenda>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-
-
-
