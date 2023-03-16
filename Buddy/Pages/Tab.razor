@@ -15,16 +15,40 @@
                         <div class="column">
                             <h3>Calendar events</h3>
                         </div>
+                        <div class="column">
+                            <h3>To-do tasks</h3>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="row" id="content">
                 <div class="column" id="mgt-col">
-                    <mgt-agenda></mgt-agenda>
+                    <mgt-agenda  group-by-day days="10">
+	                    <template data-type="event-other">
+		                    <div class="root">
+                                <a href="{{event.onlineMeetingUrl}}">Join Meeting</a>
+		                    </div>
+	                    </template>
+                    </mgt-agenda>
+                </div>
+                <div class="column" id="mgt-col">
+                    <mgt-todo></mgt-todo>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
+
+@code{
+    string clicked_data;
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+
+
+}

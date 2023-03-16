@@ -19,7 +19,7 @@ namespace BotBuddy.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync(CancellationToken cancellationToken = default)
+        public async Task<ActionResult> PostAsync(string message, CancellationToken cancellationToken = default)
         {
             // Read adaptive card template
             var cardTemplate = await System.IO.File.ReadAllTextAsync(_adaptiveCardFilePath, cancellationToken);
@@ -32,11 +32,9 @@ namespace BotBuddy.Controllers
                 (
                     new NotificationDefaultModel
                     {
-                        Title = "New Event Occurred!",
-                        AppName = "Contoso App Notification",
-                        Description = $"This is a sample http-triggered notification to {installation.Type}",
-                        NotificationUrl = "https://www.adaptivecards.io/",
-                    }
+                        Title = "Meeting update!",
+                        AppName = "Bot Buddy Reminder",
+                        Description = message                    }
                 );
                 await installation.SendAdaptiveCard(JsonConvert.DeserializeObject(cardContent), cancellationToken);
             }
